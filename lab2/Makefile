@@ -1,0 +1,22 @@
+BOT=bot
+SERVER=server
+
+SOURCE_SERVER=server.c
+
+SOURCE_BOT=bot.c
+HEADERS_BOT=bot.h
+
+CFLAGS=-Wall -g
+
+OBJECTS_SERVER=${SOURCE_SERVER:.c=.o}
+OBJECTS_BOT=${SOURCE_BOT:.c=.o}
+
+$(SERVER) $(BOT): $(OBJECTS_SERVER) $(OBJECTS_BOT)
+	$(CC) $(OBJECTS_SERVER) -o $(SERVER)
+	$(CC) $(OBJECTS_BOT) -o $(BOT)
+	
+
+$(OBJECTS_BOT): $(HEADERS_BOT)
+
+clean:
+	-rm -f $(SERVER) $(BOT) $(OBJECTS_SERVER) $(OBJECTS_BOT) server.o* *.core

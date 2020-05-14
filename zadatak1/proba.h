@@ -1,0 +1,1 @@
+#define LOGIN "as50080"

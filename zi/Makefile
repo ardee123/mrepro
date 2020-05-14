@@ -1,0 +1,18 @@
+SERVER=server
+
+SOURCE_SERVER=server.c
+
+HEADERS_SERVER=server.h
+
+CFLAGS=-Wall -g
+
+OBJECTS_SERVER=${SOURCE_SERVER:.c=.o}
+
+$(SERVER) : $(OBJECTS_SERVER)
+	$(CC) $(OBJECTS_SERVER) -o $(SERVER)
+	
+	
+$(OBJECTS_SERVER): $(HEADERS_SERVER)
+
+clean:
+	-rm -f $(SERVER) $(OBJECTS_SERVER) server.o* *.core
